@@ -1,2 +1,3 @@
-const Login = ()=> <h1>From Login Page</h1>
+import Login from "@components/login";
+
 export default Login;
