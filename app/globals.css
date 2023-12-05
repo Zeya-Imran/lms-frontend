@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+Input{
+    border-radius: 0;
+}
+.br{
+    border-radius: 0;
+}
