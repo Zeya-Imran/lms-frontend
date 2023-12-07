@@ -1,3 +1,7 @@
+/*
+    - Mian Dashboard cods
+**/
+
 'use client'
 import Layout from '@components/shared/layout';
 import Link from 'next/link'

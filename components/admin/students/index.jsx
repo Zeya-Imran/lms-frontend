@@ -1,8 +1,10 @@
 'user client'
 import Layout from '@components/shared/layout';
-import { Input, Button, Card, Avatar, Dropdown } from 'antd';
-import { UserOutlined, SearchOutlined, EnvironmentOutlined, MoreOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { Input, Button, Card, Avatar, Dropdown, Divider, Tooltip, Pagination, Menu } from 'antd';
+import { DeleteOutlined, EditOutlined, CalendarOutlined, UserOutlined, SearchOutlined, EnvironmentOutlined, MoreOutlined, VideoCameraOutlined, MailOutlined, BlockOutlined } from '@ant-design/icons';
 
+const currentDate = new Date().toDateString();
+const date = currentDate.toLocaleString()
 const StudentList = [
     {
         id: 1,
@@ -11,7 +13,52 @@ const StudentList = [
         payment: 12000,
         totalcourse: 3,
         state: 'Banglore',
-        createdAt: new Date()
+        createdAt: date
+    },
+    {
+        id: 1,
+        name: 'zeya khan',
+        image: '/img/01.jpg',
+        payment: 12000,
+        totalcourse: 3,
+        state: 'Banglore',
+        createdAt: date
+    },
+    {
+        id: 1,
+        name: 'zeya khan',
+        image: '/img/01.jpg',
+        payment: 12000,
+        totalcourse: 3,
+        state: 'Banglore',
+        createdAt: date
+    },
+    {
+        id: 1,
+        name: 'zeya khan',
+        image: '/img/01.jpg',
+        payment: 12000,
+        totalcourse: 3,
+        state: 'Banglore',
+        createdAt: date
+    },
+    {
+        id: 1,
+        name: 'zeya khan',
+        image: '/img/01.jpg',
+        payment: 12000,
+        totalcourse: 3,
+        state: 'Banglore',
+        createdAt: date
+    },
+    {
+        id: 1,
+        name: 'zeya khan',
+        image: '/img/01.jpg',
+        payment: 12000,
+        totalcourse: 3,
+        state: 'Banglore',
+        createdAt: date
     }
 ]
 
@@ -33,14 +80,29 @@ const Students = ()=>{
     }
 
     const Extra = ({item})=>{
-        return(
-            <Dropdown>
+        const menu = (
+            <Menu>
+                <Menu.Item key="edit">
+                    <div className='flex gap-x-2 items-center'>
+                        <EditOutlined />
+                        Edit
+                    </div>
+                </Menu.Item>
+                <Menu.Item key="delete">
+                    <div className='flex gap-x-2 items-center'>
+                        <DeleteOutlined />
+                        Delete
+                    </div>
+                </Menu.Item>
+            </Menu>
+        )
+        return (
+            <Dropdown overlay={menu} arrow placement='bottomRight'>
                 <Button 
-                    icon={ <MoreOutlined />}
-                    shape='circle'
-                    type='text'
-                    size='large'
-                    className='bg-gray-100'
+                    shape="circle"
+                    icon={<MoreOutlined />} 
+                    className='flex items-center justify-center bg-gray-100'
+                    type="text"
                 />
             </Dropdown>
         )
@@ -112,10 +174,49 @@ const Students = ()=>{
                                     </div>
                                     <p className='text-zinc-500 font-semibold'>{student.totalcourse}</p>
                                 </div>
+
+                                <div className='flex justify-between mt-5'>
+                                    <div className='flex items-center gap-x-4'>
+                                        <Button shape='circle' type='text' className='bg-indigo-200 text-indigo-600 font-bold' 
+                                            icon={<CalendarOutlined />}
+                                        />
+                                            
+                                        <p className='font-semibold text-md'>Joined</p>
+                                    </div>
+                                    <p className='text-zinc-500 font-semibold'>{student.createdAt}</p>
+                                </div>
+                                <Divider>
+                                    <div className='flex gap-x-4'>
+                                        <Tooltip title="Message">
+                                            <Button 
+                                                icon={<MailOutlined className='text-blue-600' />}
+                                                type='text'
+                                                shape='circle'
+                                                size='large'
+                                                className='bg-blue-100'
+                                            />
+                                        </Tooltip>
+                                        <Tooltip title="Block">
+                                            <Button 
+                                                icon={<BlockOutlined className='text-rose-600' />}
+                                                type='text'
+                                                shape='circle'
+                                                size='large'
+                                                className='bg-rose-100'
+                                            />
+                                        </Tooltip>
+                                    </div>
+                                    
+                                </Divider>
+
+                                
                             </Card>
                         ))
                     }
                </div>
+                <div className='flex justify-end mt-10'>
+                    <Pagination total={500}  />
+                </div>
             </div>
         </Layout>
     )

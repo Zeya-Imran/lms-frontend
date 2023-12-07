@@ -23,28 +23,19 @@ const props = {
       console.log('Dropped files', e.dataTransfer.files);
     },
   };
-const Files = () => {
+const Uploaders = () => {
   return (
-    <Layout 
-        title="Files & Media"
-        subtitle="Upload your media and use them later"
-    >
-        <div className='flex justify-center'>
-            <div className='w-9/12'>
-                <Dragger {...props}>
-                    <p className="ant-upload-drag-icon">
-                    <InboxOutlined />
-                    </p>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                    <p className="ant-upload-hint">
-                    Support for a single or bulk upload. Strictly prohibited from uploading company data or other
-                    banned files.
-                    </p>
-                </Dragger>
-            </div>
-        </div>
-    </Layout>
+    <Dragger {...props}>
+        <p className="ant-upload-drag-icon">
+            <InboxOutlined />
+            </p>
+            <p className="ant-upload-text">Click or drag file to this area to upload</p>
+            <p className="ant-upload-hint">
+            Support for a single or bulk upload. Strictly prohibited from uploading company data or other
+            banned files.
+        </p>
+    </Dragger>
   )
 }
 
-export default Files
+export default Uploaders
