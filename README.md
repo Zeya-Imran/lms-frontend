@@ -16,4 +16,13 @@ const ApexCharts = dynamic(()=>import('react-apexcharts'),{
 *** text editor 
 - we are using currently CKEditior 
 - alternaive option is react-quill
+
+*** image for container  width
+<Image
+    alt="example"
+    width={0}
+    height={0}
+    layout='responsive'
+    src={previewImage}
+/>
  

@@ -15,7 +15,7 @@ toolbar: [
     'numberedList', 'bulletedList' 
 ]
 }
-const Editor = ({loading})=>{
+const Editor = ({loading,getValue})=>{
     const el = useRef();
     const {CKEditor, ClassicEditor} = (el.current || {});
     useEffect(()=>{
@@ -35,6 +35,7 @@ const Editor = ({loading})=>{
                 const data= editor.getData()
                 console.log(data)
                 console.log('fdsfsdf');
+                getValue(data)
             }}
             />
         }
