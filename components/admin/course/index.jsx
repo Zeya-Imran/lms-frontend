@@ -10,8 +10,8 @@ const courseDesign = (text,obj)=>{
         <div className='flex gap-x-4'>
             <Image 
                 src={obj.thumbnail}
-                width={120}
-                height={120}
+                width='120'
+                height='120'
                 alt={obj.thumbnail}
             />
             <div>
@@ -185,7 +185,7 @@ const Courses = ()=>{
             toolbar={<Toolbar />}
         >
             <div>
-                <Table dataSource={dataSource} columns={columns} />;
+                <Table dataSource={dataSource} columns={columns} />
             </div>
         </Layout>
     )

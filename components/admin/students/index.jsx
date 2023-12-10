@@ -59,6 +59,33 @@ const StudentList = [
         totalcourse: 3,
         state: 'Banglore',
         createdAt: date
+    },
+    {
+        id: 1,
+        name: 'zeya khan',
+        image: '/img/01.jpg',
+        payment: 12000,
+        totalcourse: 3,
+        state: 'Banglore',
+        createdAt: date
+    },
+    {
+        id: 1,
+        name: 'zeya khan',
+        image: '/img/01.jpg',
+        payment: 12000,
+        totalcourse: 3,
+        state: 'Banglore',
+        createdAt: date
+    },
+    {
+        id: 1,
+        name: 'zeya khan',
+        image: '/img/01.jpg',
+        payment: 12000,
+        totalcourse: 3,
+        state: 'Banglore',
+        createdAt: date
     }
 ]
 

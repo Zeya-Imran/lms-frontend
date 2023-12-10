@@ -1,13 +1,3 @@
-// {
-//   "compilerOptions": {
-//     "paths": {
-//       "@components/*":["components/*"],
-//       "@/*": ["./*"]
-//     }
-//   }
-// }
-
-
 { 
   "compilerOptions": {
      "baseUrl": "./", 

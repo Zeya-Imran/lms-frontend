@@ -1,77 +1,89 @@
 'use client'
 import '@components/com.css'
-import Logo from '@components/shared/logo';
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import Logo from '@components/shared/logo';
 import { DashboardOutlined, VideoCameraOutlined, PicCenterOutlined, FileDoneOutlined, UserOutlined, AlertOutlined, SettingOutlined } from '@ant-design/icons';
-import { Layout, Button, Menu } from 'antd';
+import { Layout, Button, Menu, Breadcrumb } from 'antd';
 const { Sider,Content,Header } = Layout;
 
 const menus = [
     {
-        id:1,
-        name: "Dashboard",
-        href: "/admin",
+        label: <Link href="/admin">{'Dashboard'}</Link>,
+        key: '/admin',
         icon: <DashboardOutlined />
     },
     {
-        id:2,
-        name: "Course",
-        href: "/admin/course",
-        icon: <VideoCameraOutlined />
-    },
-    {
-        id:3,
-        name: "Files & Media",
-        href: "/admin/files",
-        icon: <FileDoneOutlined />
-    },
-    {
-        id:4,
-        name: "Students",
-        href: "/admin/students",
+        label: <Link href="/admin/students">{'Students'}</Link>,
+        key: '/admin/students',
         icon: <UserOutlined />
     },
     {
-        id:5,
-        name: "Sales & Revenue",
-        href: "/admin/sales",
+        label: <Link href="/admin/courses">{'Courses'}</Link>,
+        key: '/admin/courses',
+        icon: <VideoCameraOutlined />
+    },
+    {
+        label: <Link href="/admin/files">{'Files & Media'}</Link>,
+        key: '/admin/files',
+        icon: <FileDoneOutlined />
+    },
+    {
+        label: <Link href="/admin/sales">{'Sales & Revenue'}</Link>,
+        key: '/admin/sales',
         icon: <AlertOutlined />
     },
     {
-        id:6,
-        name: "Setting",
-        href: "/admin/setting",
+        label: <Link href="/admin/settings">{'Settings'}</Link>,
+        key: '/admin/settings',
         icon: <SettingOutlined />
-    }
+    },
 ]
 
 const LayoutSection = ({children, title=null, subtitle=null, toolbar=null})=>{
     //Hooks
+    const pathName = usePathname()
     const [open, setOpen] = useState(false);
+    
+    const breadItems = ()=>{
+        const items = pathName.split("/").map((item,index)=>(
+            {title: <Link href={pathName.split(`/${item}`)[0]+`/${item}`}>{item}</Link>}
+        ))
+        return items;
+    }
+
     return(
        <Layout>
-            <Sider className='min-h-screen' trigger={null} collapsible collapsed={open}>
-                {/* brnad logo */}
+            <Sider  
+                trigger={null} 
+                collapsible collapsed={open}
+                style={{
+                    overflow: 'auto',
+                    height: '100vh',
+                    position: 'fixed',
+                    left: 0,
+                    top: 0,
+                    
+            }}
+            >
+                {/* brnad logo */} 
                 <div className='py-4'>
                     <Logo  color='white' />
                 </div>           
-                <Menu theme='dark'>
-                    {
-                        menus.map((menus)=>(
-                           <Menu.Item
-                           key={menus.id}
-                           icon={menus.icon}
-                           >
-                                <Link href={menus.href}>{menus.name}</Link>
-                           </Menu.Item> 
-                        ))
-                    }
-                </Menu>
+                <Menu theme="dark" items={menus}  selectedkeys={[pathName]}/> 
 
             </Sider>
-            <Layout>
-                <Header className='bg-white flex justify-between items-center h-20 px-6'>
+            <Layout style={{marginLeft:200}} className='min-h-screen'>
+                <Header 
+                    className='bg-white flex justify-between items-center h-20 px-6 shadow-md'
+                    style={{
+                        position: 'sticky',
+                        top:0,
+                        zIndex:1,
+                        width:'100%'
+                    }}
+                >
                 <div className='flex items-center gap-x-6'>
                     <Button 
                         onClick={()=>setOpen(!open)} 
@@ -85,7 +97,7 @@ const LayoutSection = ({children, title=null, subtitle=null, toolbar=null})=>{
                     <div>
                         {
                             title && 
-                            <h1 className='text-lg font-semibold'>{title}</h1>
+                            <h1 className='text-lg font-semibold capitalize'>{title}</h1>
                         }
                         {
                             subtitle && 
@@ -98,6 +110,7 @@ const LayoutSection = ({children, title=null, subtitle=null, toolbar=null})=>{
                     </div>
                 </Header>
                 <Content className='p-8'>
+                    <Breadcrumb items={breadItems()} />
                     {children}
                 </Content>
             </Layout>
