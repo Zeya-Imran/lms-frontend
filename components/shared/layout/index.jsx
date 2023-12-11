@@ -35,8 +35,8 @@ const menus = [
         icon: <AlertOutlined />
     },
     {
-        label: <Link href="/admin/settings">{'Settings'}</Link>,
-        key: '/admin/settings',
+        label: <Link href="/admin/setting">{'Settings'}</Link>,
+        key: '/admin/setting',
         icon: <SettingOutlined />
     },
 ]
@@ -109,7 +109,7 @@ const LayoutSection = ({children, title=null, subtitle=null, toolbar=null})=>{
                         {toolbar}
                     </div>
                 </Header>
-                <Content className='p-8'>
+                <Content className='p-8 flex flex-col gap-y-4'>
                     <Breadcrumb items={breadItems()} />
                     {children}
                 </Content>
