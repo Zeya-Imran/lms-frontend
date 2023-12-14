@@ -69,7 +69,10 @@ const LayoutSection = ({children, title=null, subtitle=null, toolbar=null})=>{
             >
                 {/* brnad logo */} 
                 <div className='py-4'>
-                    <Logo  color='white' />
+                    <Link href={'/admin'}>
+                        <Logo  color='white' />
+                    </Link>
+                    
                 </div>           
                 <Menu theme="dark" items={menus}  selectedkeys={[pathName]}/> 
 
