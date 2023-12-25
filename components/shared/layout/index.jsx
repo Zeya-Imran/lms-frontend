@@ -56,9 +56,11 @@ const LayoutSection = ({children, title=null, subtitle=null, toolbar=null})=>{
     return(
        <Layout>
             <Sider  
+                className='bg-white'
                 trigger={null} 
                 collapsible collapsed={open}
                 style={{
+                    backgroundColor: 'white',
                     overflow: 'auto',
                     height: '100vh',
                     position: 'fixed',
@@ -74,7 +76,7 @@ const LayoutSection = ({children, title=null, subtitle=null, toolbar=null})=>{
                     </Link>
                     
                 </div>           
-                <Menu theme="dark" items={menus}  selectedkeys={[pathName]}/> 
+                <Menu theme="light" items={menus}  selectedkeys={[pathName]} /> 
 
             </Sider>
             <Layout style={{marginLeft:200}} className='min-h-screen'>
